@@ -1,0 +1,34 @@
+body {
+    font-family: cursive;
+    text-align: center;
+}
+
+#board {
+    height: 540px;
+    width: 630px;
+
+    background-color: darkgoldenrod;
+    border: 10px solid gold;
+
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tile{
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+
+    background-color: yellow;
+    border-radius: 50%;
+    border: 5px solid gold;
+}
+
+.white-piece {
+    background-color: white;
+}
+
+.black-piece {
+    background-color: black;
+}
