@@ -87,6 +87,19 @@ function checkWinner(){
             }
         }
     }
+    // vertically
+    for (let c = 0; c < columns; c++) {
+        for (let r = 0; r < rows - 3; r++) {
+            if (board[r][c] != ' '){
+                if (board[r][c] == board[r+1][c] && board[r+1][c] == board[r+2][c] && board[r+2][c] == board[r+3][c]) {
+                    setWinner(r,c);
+                    return;
+                } else {
+                    whosTurn();
+                }
+            }
+        }
+    }
 }
 
 function setWinner(r, c) {
