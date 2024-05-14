@@ -104,7 +104,6 @@ function checkWinner(){
     for (let c = 0; c < columns - 3; c++) {
         for (let r = 0; r < rows - 3; r++) {
             if (board[r][c] != ' '){
-                console.log(r,c,board[r][c]);
                 if ((board[r][c] == board[r+1][c+1] && board[r+1][c+1] == board[r+2][c+2] && board[r+2][c+2] == board[r+3][c+3]) 
                     || (board[r][c] == board[r-1][c-1] && board[r-1][c-1] == board[r-2][c-2] && board[r-2][c-2] == board[r-3][c-3])
                     || (board[r][c] == board[r+1][c-1] && board[r+1][c-1] == board[r+2][c-2] && board[r+2][c-2] == board[r+3][c-3])
