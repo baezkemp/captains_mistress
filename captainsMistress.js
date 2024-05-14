@@ -51,6 +51,12 @@ function setPiece() {
    
     // make sure tile falls to the correct row for the column
     r = currColumns[c]; 
+console.log(r);
+    // make sure spot is empty
+    if (r < 0) { // board[r][c] != ' '
+        console.log("return");
+        return;
+    }
     
     board[r][c] = currPlayer;
     let tile = document.getElementById(r.toString() + "-" + c.toString()); //have to redefine r before we can call the tile
@@ -74,6 +80,7 @@ function whosTurn(){
 }
 
 function checkWinner(){
+    console.log("check winner");
     // horixontally
     for (let r = 0; r < rows; r++) {
         for (let c = 0; c < columns - 3; c++) {
@@ -100,18 +107,25 @@ function checkWinner(){
             }
         }
     }
-    // diagonal
-    for (let c = 0; c < columns - 3; c++) {
-        for (let r = 0; r < rows - 3; r++) {
-            if (board[r][c] != ' '){
-                if ((board[r][c] == board[r+1][c+1] && board[r+1][c+1] == board[r+2][c+2] && board[r+2][c+2] == board[r+3][c+3]) 
-                    || (board[r][c] == board[r-1][c-1] && board[r-1][c-1] == board[r-2][c-2] && board[r-2][c-2] == board[r-3][c-3])
-                    || (board[r][c] == board[r+1][c-1] && board[r+1][c-1] == board[r+2][c-2] && board[r+2][c-2] == board[r+3][c-3])
-                    || (board[r][c] == board[r-1][c+1] && board[r-1][c+1] == board[r-2][c+2] && board[r-2][c+2] == board[r-3][c+3])) {
-                    setWinner(r,c);
+    // anti diagonal
+    for (let r = 0; r < rows - 3; r++) {
+        for (let c = 0; c < columns - 3; c++) {
+            if (board[r][c] != ' ') {
+                if (board[r][c] == board[r+1][c+1] && board[r+1][c+1] == board[r+2][c+2] && board[r+2][c+2] == board[r+3][c+3]) {
+                    setWinner(r, c);
                     return;
-                } else {
-                    whosTurn();
+                }
+            }
+        }
+    }
+
+    // diagonal
+    for (let r = 3; r < rows; r++) {
+        for (let c = 0; c < columns - 3; c++) {
+            if (board[r][c] != ' ') {
+                if (board[r][c] == board[r-1][c+1] && board[r-1][c+1] == board[r-2][c+2] && board[r-2][c+2] == board[r-3][c+3]) {
+                    setWinner(r, c);
+                    return;
                 }
             }
         }
